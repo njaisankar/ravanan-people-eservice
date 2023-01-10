@@ -1,3 +1,5 @@
+requests
+Django
 xhtml2pdf
 wkhtmltopdf
 pdf2image
