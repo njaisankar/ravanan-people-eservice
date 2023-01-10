@@ -27,7 +27,7 @@ SECRET_KEY = 'django-insecure-vo!pjo5=4nhw^x72%ngj1l$*jj04+vv&o75)164%+@x4%$saw+
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['3.90.252.160','ntkveerapandi.org','www.ntkveerapandi.org','127.0.0.1']
+ALLOWED_HOSTS = ['3.90.252.160','ntkveerapandi.org','www.ntkveerapandi.org','127.0.0.1','https://peopleeservice.azurewebsites.net/','peopleeservice.azurewebsites.net','http://peopleeservice.azurewebsites.net']
 # ALLOWED_HOSTS = []
 
 
