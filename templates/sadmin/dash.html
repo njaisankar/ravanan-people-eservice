@@ -1,0 +1,82 @@
+{% extends 'sadmin/base.html' %}
+{% load static %}
+{% block content %}
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<section id="statistics-card">
+  <!-- Stats Vertical Card -->
+  <div class="row">
+    {% if is_ration_access %}
+      <div class="col-xl-3 col-md-4 col-sm-6">
+         <a href="{% url 'ration' %}">
+             <div class="card text-center">
+                 <div class="card-body">
+                     <h4 class="font-weight-bolder">Ration Card</h4>
+                 </div>
+             </div>
+         </a>
+      </div>
+      {% endif %}
+
+      <!-- {% if is_aadhar_access %}
+      <div class="col-xl-3 col-md-4 col-sm-6">
+         <a href="{% url 'aadhar' %}">
+             <div class="card text-center">
+                 <div class="card-body">
+                     <h4 class="font-weight-bolder">Aadhar Card</h4>
+                 </div>
+             </div>
+         </a>
+      </div>
+       {% endif %}
+
+      {% if is_pan_access %}
+      <div class="col-xl-3 col-md-4 col-sm-6">
+         <a href="{% url 'pan' %}">
+             <div class="card text-center">
+                 <div class="card-body">
+                     <h4 class="font-weight-bolder">PAN Card</h4>
+                 </div>
+             </div>
+         </a>
+      </div>
+      {% endif %}
+
+      {% if is_welfare_access %}
+      <div class="col-xl-3 col-md-4 col-sm-6">
+         <a href="{% url 'Welfare' %}">
+             <div class="card text-center">
+                 <div class="card-body">
+                     <h4 class="font-weight-bolder">Welfare</h4>
+                 </div>
+             </div>
+         </a>
+      </div>
+      {% endif %}
+
+      {% if is_voter_access %}
+      <div class="col-xl-3 col-md-4 col-sm-6">
+         <a href="{% url 'Voter-card' %}">
+             <div class="card text-center">
+                 <div class="card-body">
+                     <h4 class="font-weight-bolder">Voter Id</h4>
+                 </div>
+             </div>
+         </a>
+      </div>
+      {% endif %} -->
+
+      <!-- {% if is_ithara_access %}
+      <div class="col-xl-3 col-md-4 col-sm-6">
+         <a href="{% url 'ithura' %}">
+             <div class="card text-center">
+                 <div class="card-body">
+                     <h4 class="font-weight-bolder">Other</h4>
+                 </div>
+             </div>
+         </a>
+      </div>
+      {%endif%} -->
+  </div>
+</section>
+
+{% endblock %}

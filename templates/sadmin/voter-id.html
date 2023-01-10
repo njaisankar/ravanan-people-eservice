@@ -1,0 +1,477 @@
+{% extends 'sadmin/base.html' %}
+{% load static %}
+{% block content %}
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<section id="card-demo-example">
+
+   <ul class="nav justify-content-center">
+      {% for lnk in obj_lnk %}   
+          <li class="nav-item">
+             <!-- <button  type="button" class="btn btn-primary"> -->
+                   {% if lnk.voter_1_titleLink %}
+                      <a class="link-primary px-2" role="button"  href="{{ lnk.voter_1_titleLink }}" target="_blank">{{ lnk.voter_1_title }}</a>
+                   {% endif %}
+                   {% if lnk.voter_2_titleLink %}
+                   <a class="link-primary px-2" role="button"  href="{{ lnk.voter_2_titleLink }}" target="_blank">{{ lnk.voter_2_title }}</a>
+                   {% endif %}
+                   {% if lnk.voter_3_titleLink %}
+                   <a class="link-primary px-2" role="button"  href="{{ lnk.voter_3_titleLink }}" target="_blank">{{ lnk.voter_3_title }}</a>
+                   {% endif %}
+                   {% if lnk.voter_4_titleLink %}
+                   <a class="link-primary px-2" role="button"  href="{{ lnk.voter_4_titleLink }}" target="_blank">{{ lnk.voter_4_title }}</a>
+                   {% endif %}
+             <!-- </button> -->
+             <br>
+             <br>
+          </li>
+       {% endfor %} 
+    </ul>
+   <div class="row match-height">
+      <div class="col-lg-12">
+         <div class="card card-payment">
+            <div class="card-header">
+               <h4 class="card-title"> <u><b>வாக்காளர் அட்டை </b></u> :  சேவையைக் கோருங்கள்</h4>
+               <!-- <a href="#" data-toggle="modal" data-target="#user-profile-update" class="btn btn-gradient-success" href="">Update</a> -->
+            </div>
+            <form method="POST" enctype="multipart/form-data">
+               {% csrf_token %}
+               <input type="hidden" name="form_name" value="newServiceFrom">
+               <div class="card-body" {% if is_view_only %} style="display: none;" {%else%} style="display: block;" {%endif%}>
+                  <div class="row">
+                     <div class="col-md-3 col-12" hidden>
+                        <label >வேலைகள் தலைப்பு</label >
+                        <select name="workTitle" class="form-control" id="meal" >
+                           <option value="வாக்காளர் அட்டை">வாக்காளர் அட்டை</option>
+                        </select>
+                     </div>
+                     <div class="col-md-3 col-12" id="ithura" style="display: none;">
+                        <div class="form-group">
+                           <label>இதர</label>
+                           <input name="ithura"  type="text" class="form-control" id="ithuraInput"  >
+                        </div>
+                     </div>
+                     <div class="col-md-3 col-12"id="workCover">
+                        <div class="form-group">
+                           <label>வேலைகள்</label>
+                           <select name="works" class="form-control" id="work" onChange="workTitle1(this.value);" >
+                              <option value="none" selected disabled >Select</option>
+                              <option>புதிய வாக்காளர் அட்டை விண்ணப்பம் புதுப்பித்தல்</option>
+                              <option>வாக்காளர் அட்டையில் முகவரி மாற்றம்</option>
+                              <option>நகல் வாக்காளர் அட்டை விண்ணப்பம்</option>
+                              <option>வாக்காளர் அட்டையில் பெயர் மாற்றம்</option>
+                              <option>வாக்காளர் அட்டையில் அகவை நாள் மாற்றம்</option>
+                              <option>வாக்காளர் அட்டையில் புகைப்படம் மாற்றம்</option>
+                              <option>வாக்காளர் அட்டையில் உறவு முறை பெயர் மாற்றம்</option>
+                              <option>வாக்காளர் அட்டையில் தொகுதி மாற்றம்</option>
+                           </select>
+                        </div>
+                     </div>
+                     <div class="col-md-3 col-12" hidden>
+                        <div id="new_card_det" style="display: none;" class="form-group">
+                           <label>கடை எண்</label>
+                           <input name="kadaiNum" type="text" class="form-control" id="exampleInput"  >
+                        </div>
+                     </div>
+                     <div class="col-md-3 col-12">
+                        <div class="form-group">
+                           <label>குறிப்பு எண்</label>
+                           <input name="NoteNum" type="text" class="form-control" id="exampleInput" required >
+                        </div>
+                     </div>
+                     <div class="col-md-3 col-12">
+                        <div class="form-group">
+                           <label>ஒப்புகை சீட்டு</label>
+                           <input name="upData" type="file" class="form-control" id="exampleInput" >
+                        </div>
+                     </div>
+                     <div class="col-md-3 col-12">
+                        <div class="form-group">
+                           <label>தொகை</label>
+                           <input name="cash" type="text" class="form-control" id="exampleInput" required >
+                        </div>
+                     </div>
+                     <div class="col-md-3 col-12">
+                        <div class="form-group">
+                           <label>பயனாளி பெயர்</label>
+                           <input name="benName" type="text" class="form-control" id="exampleInput" >
+                        </div>
+                     </div>
+                     <div class="col-md-3 col-12">
+                        <div class="form-group">
+                           <label>பதிவு செய்யப்பட்ட கைபேசி</label>
+                           <input name="RegConNum" type="text" class="form-control" id="exampleInput" onChange="mobileNO(this.value);">
+                        </div>
+                     </div>
+                     <div class="col-md-3 col-12">
+                        <div class="form-group">
+                           <label>தொடர்பு எண்</label>
+                           <input name="conNum" type="text" class="form-control" id="co_nm" >
+                        </div>
+                     </div>
+                     <div class="col-md-3 col-12">
+                        <div class="form-group">
+                           <label>பயனாளியின் மின்னஞ்சல்</label>
+                           <input name="benMail" type="text" class="form-control" id="exampleInput" required >
+                        </div>
+                     </div>
+                     <div class="col-md-3 col-12">
+                        <div class="form-group">
+                           <label>ஒன்றியம் / பேரூராட்சி</label>
+                           <select name="taluk" class="form-control " id="select_sel" onChange="locka(this.value);" >
+                              <option value="none" selected disabled hidden>
+                                 Select an Option
+                              </option>
+                              <option value="ஒன்றியம்">ஒன்றியம்</option>
+                              <option value="பேரூராட்சி">பேரூராட்சி</option>
+                              <option value="இதர">இதர</option>
+                           </select>
+                        </div>
+                     </div>
+                     <div class="col-md-3 col-12" id="other_1" style="display: none;">
+                        <div class="form-group">
+                           <label>இதர </label>
+                           <input name="others_1" type="text" class="form-control" id="OtherInput"  >
+                        </div>
+                     </div>
+                     <div class="col-md-3 col-12" id="ondr_1">
+                        <div class="form-group">
+                           <label>ஊர் பெயர்கள்</label>
+                           <select name="ஒன்றியம்" class="form-control" id="ondr" onChange="nameAchi(this.value);">
+                              <option value="none" selected>Select</option>
+                           </select>
+                        </div>
+                     </div>
+                     <div id="city_Name" class="col-md-3 col-12">
+                        <div  class="form-group" id="oru_achi_hide_1">
+                           <label>ஊராட்சி</label>
+                           <select name="ஊர் பெயர்கள்" class="form-control" id="oru_achi_hide"  onChange="thairu(this.value);">
+                              <option value="Null" selected>Select</option>
+                           </select>
+                        </div>
+                     </div>
+                     <div class="col-md-3 col-12" id="street_name_1">
+                        <div class="form-group">
+                           <label>தெரு பெயர்கள்</label>
+                           <select name="streeName" class="form-control" id="street_name">
+                              <option value="Null" selected>Select</option>
+                           </select>
+                        </div>
+                     </div>
+                     <div class="col-md-4 col-12 py-2">
+                        <div class="form-group">
+                           <button type="submit" class="btn btn-gradient-success">பதிவு செய்க</button>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+            </form>
+         </div>
+      </div>
+   </div>
+</section>
+<section id="card-demo-example">
+   <div class="card card-payment">
+      <div class="table-responsive">
+         <table class="table">
+            <thead>
+               <tr>
+                  <!--th>வரிசைஎண்</th-->
+                  <th>தேதிகள்</th>
+                  <th>பதிவு செய்பவர்</th>
+                  <th>பயனாளி பெயர்</th>
+                  <!-- <th>வேலைகள் தலைப்பு</th> -->
+                  <th>வேலைகள்</th>
+                  <th>குறிப்பு எண் </th>
+                  <th>தொடர்பு எண்</th>
+                  <th>பதிவு செய்யப்பட்ட கைபேசி</th>
+                  <th>பயனாளி பெயர்</th>
+                  <th>பயனாளியின் மின்னஞ்சல்</th>
+                  <th>நடவடிக்க திருத்தங்கள் </th>
+                  <th>ஒப்புகை சீட்டு</th>
+                  <th> ஊர் பெயர்கள்</th>
+                  <th>தெரு பெயர்கள்</th>
+               </tr>
+            </thead>
+            <tbody>
+               {% for i in obj %}
+               <tr>
+                  <!--td><a href="#" data-toggle="modal" class="dropdown-item" data-target="#view{{i.id}}">{{forloop.revcounter}}</a></td-->
+                  <td><a style="font-size: small;" href="#" data-toggle="modal" class="dropdown-item" data-target="#view{{i.id}}">{{i.date}}</a></td>
+                  <td><a href="#" data-toggle="modal" class="dropdown-item" data-target="#view{{i.id}}">{{i.user}}</a></td>
+                  <td><a href="#" data-toggle="modal" class="dropdown-item" data-target="#view{{i.id}}">{{i.bname}}</a></td>
+                  <!-- <td><a href="#" data-toggle="modal" class="dropdown-item" data-target="#view{{i.id}}">{{i.jobtit}}</a></td> -->
+                  <td><a href="#" data-toggle="modal" class="dropdown-item" data-target="#view{{i.id}}">{{i.job}}</a></td>
+                  <td><a href="#" data-toggle="modal" class="dropdown-item" data-target="#view{{i.id}}">{{i.refno}}</a></td>
+                  <td><a href="#" data-toggle="modal" class="dropdown-item" data-target="#view{{i.id}}">{{i.conmob}}</a></td>
+                  <td><a href="#" data-toggle="modal" class="dropdown-item" data-target="#view{{i.id}}">{{i.regmob}}</a></td>
+                  <td><a href="#" data-toggle="modal" class="dropdown-item" data-target="#view{{i.id}}">{{i.bname}}</a></td>
+                  <td><a href="#" data-toggle="modal" class="dropdown-item" data-target="#view{{i.id}}">{{i.email}}</a></td>
+                  <td><a href="#" data-toggle="modal" class="dropdown-item" data-target="#view{{i.id}}">{{i.status}}</a></td>
+                  <td><a download href="{{i.refdoc}}" data-toggle="modal" class="dropdown-item" data-target="#view{{i.id}}"></a></td>
+                  <td><a href="#" data-toggle="modal" class="dropdown-item" data-target="#view{{i.id}}">{{i.oor}}</a></td>
+                  <td><a href="#" data-toggle="modal" class="dropdown-item" data-target="#view{{i.id}}">{{i.theru}}</a></td>
+                  <td>
+                     <div class="dropdown" {% if is_view_only %} style="display: none;" {%else%} style="display: block;" {%endif%}>
+                        <button type="button" class="btn btn-sm dropdown-toggle hide-arrow" data-toggle="dropdown">
+                        <i data-feather="more-vertical"></i>
+                        </button>
+                        <div class="dropdown-menu">
+                           <a class="dropdown-item" data-toggle="modal" data-target="#edit{{i.id}}" href="#">
+                           <i data-feather="edit-2" class="mr-50"></i>
+                           <span>Edit</span>
+                           </a>
+                           <a class="dropdown-item" data-toggle="modal" data-target="#del{{i.id}}"  href="#">
+                           <i data-feather="trash" class="mr-50"></i>
+                           <span>Delete</span>
+                           </a>
+                        </div>
+                     </div>
+                  </td>
+               </tr>
+               {% endfor %}
+               <tr style="background-color:darkgrey; color:whitesmoke"><td colspan="14">மொத்தம்: {{total_records}}</td></tr>
+            </tbody>
+         </table>
+      </div>
+      <!--form method="POST">
+         {% csrf_token %}
+         <input type="hidden" name="form_name" value="identity">
+         <input type="hidden" name="jobType" value="ration">
+         <button type="submit" class="btn btn-gradient-warning col-12 ">View More</button>
+      </form-->
+   </div>
+</section>
+{% for i in obj %}
+<div class="modal fade" id="view{{i.id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalScrollableTitle" aria-hidden="true">
+   <div class="modal-dialog modal-dialog-scrollable modal-xl" role="document">
+      <div class="modal-content">
+         <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalScrollableTitle">Delete a Name</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+            </button>
+         </div>
+         <div class="modal-body">
+            <div class="table-responsive">
+               <table class="table">
+                  <thead>
+                     <tr>
+                        <th>User</th>
+                        <th>வேலைகள் தலைப்பு</th>
+                        <th>வேலைகள்</th>
+                        <th>ithura</th>
+                        <th>கடை எண்</th>
+                        <th>குறிப்பு எண்</th>
+                        <th>ஒப்புகை சீட்டு</th>
+                        <th>தொகை</th>
+                        <th>பயனாளி பெயர்</th>
+                        <th>பதிவு செய்யப்பட்ட கைபேசி</th>
+                        <th>தொடர்பு எண்</th>
+                        <th>பயனாளியின் மின்னஞ்சல்</th>
+                        <th>ஒன்றியம் / பேரூராட்சி</th>
+                        <th>others</th>
+                        <th>ஊர் பெயர்கள்</th>
+                        <th>ஊராட்சி</th>
+                        <th>தெரு பெயர்கள்</th>
+                        <th>Status</th>
+                        <th>Accept/Reject</th>
+                        <th>Download Certificate</th>
+                     </tr>
+                  </thead>
+                  <tbody>
+                     <tr>
+                        <td>{{i.user}}</td>
+                        <td>{{i.jobtit}}</td>
+                        <td>{{i.job}}</td>
+                        <td>{{id.ithura}}</td>
+                        <td>{{i.shopno}}</td>
+                        <td>{{i.refno}}</td>
+                        <td><a download href="{{i.refdoc.url}}">ஒப்புகை சீட்டு</a></td>
+                        <td>{{i.amount}}</td>
+                        <td>{{i.bname}}</td>
+                        <td>{{i.regmob}}</td>
+                        <td>{{i.conmob}}</td>
+                        <td>{{i.email}}</td>
+                        <td>{{i.ondriyam}}</td>
+                        <td>{{id.other_1}}</td>
+                        <td>{{i.oor}}</td>
+                        <td>{{i.oratchi}}</td>
+                        <td>{{i.theru}}</td>
+                        <td>{{i.status}}</td>
+                        <td>{{i.approve}}</td>
+                        <td>
+                           <form method="POST">{% csrf_token %}
+                              <input type="hidden" name="form_name" value="Certi">
+                              <input type="hidden" name="benName" value="{{i.bname}}">
+                              <input type="hidden" name="refno" value="{{i.refno}}">
+                              <input type="hidden" name="job" value="{{i.job}}">
+                              <input type="hidden" name="amount" value="{{i.amount}}">
+                              <input type="hidden" name="date" value="null">
+                              <input type="hidden" name="user" value="{{i.user}}">
+                              <input type="hidden" name="email" value="{{i.email}}">
+                              <button type="submit" class="btn btn-gradient-success">certificate</button>
+                           </form>
+                        </td>
+                     </tr>
+                  </tbody>
+               </table>
+            </div>
+         </div>
+      </div>
+   </div>
+</div>
+{% endfor %}
+{% for i in obj %}
+<div class="modal fade" id="edit{{i.id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalScrollableTitle" aria-hidden="true">
+   <div class="modal-dialog modal-dialog-scrollable modal-xl" role="document">
+      <div class="modal-content">
+         <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalScrollableTitle">Update Record</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+            </button>
+         </div>
+         <div class="modal-body">
+            <form method="POST" enctype="multipart/form-data" action="/sadmin-dashboard">
+               {% csrf_token %}
+               <input type="hidden" name="form_name" value="edit">
+               <input type="hidden" name="idd" value="{{i.id}}">
+               <div class="card-body">
+                  <div class="row">
+                     <div class="col-md-3 col-12">
+                        <div class="form-group">
+                           <label>வேலைகள் தலைப்பு</label>
+                           <input name="workTitle" value="{{i.jobtit}}" type="text" class="form-control"  >
+                        </div>
+                     </div>
+                     <div class="col-md-3 col-12">
+                        <div class="form-group">
+                           <label>வேலைகள்</label>
+                           <input name="works" value="{{i.job}}" type="text" class="form-control"  >
+                        </div>
+                     </div>
+                     <div class="col-md-3 col-12">
+                        <div class="form-group">
+                           <label>கடை எண்</label>
+                           <input name="kadaiNum" value="{{i.shopno}}" type="text" class="form-control"  >
+                        </div>
+                     </div>
+                     <div class="col-md-3 col-12">
+                        <div class="form-group">
+                           <label>குறிப்பு எண்</label>
+                           <input name="NoteNum" value="{{i.refno}}" type="text" class="form-control" id="exampleInput"  required>
+                        </div>
+                     </div>
+                     <div class="col-md-3 col-12">
+                        <div class="form-group">
+                           <label>தொகை</label>
+                           <input name="cash" value="{{i.amount}}" type="text" class="form-control"  >
+                        </div>
+                     </div>
+                     <div class="col-md-3 col-12">
+                        <div class="form-group">
+                           <label>பயனாளி பெயர்</label>
+                           <input name="benName" value="{{i.bname}}" type="text" class="form-control" id="exampleInput" required>
+                        </div>
+                     </div>
+                     <div class="col-md-3 col-12">
+                        <div class="form-group">
+                           <label>பதிவு செய்யப்பட்ட கைபேசி</label>
+                           <input name="RegConNum" value="{{i.regmob}}" type="text" class="form-control" required>
+                        </div>
+                     </div>
+                     <div class="col-md-3 col-12">
+                        <div class="form-group">
+                           <label>தொடர்பு எண்</label>
+                           <input name="conNum" value="{{i.conmob}}" type="text" class="form-control" required>
+                        </div>
+                     </div>
+                     <div class="col-md-3 col-12">
+                        <div class="form-group">
+                           <label>பயனாளியின் மின்னஞ்சல்</label>
+                           <input name="benMail" value="{{i.email}}" type="text" class="form-control" id="exampleInput" required>
+                        </div>
+                     </div>
+                     <div class="col-md-3 col-12">
+                        <div class="form-group">
+                           <label>ஒன்றியம் / பேரூராட்சி</label>
+                           <input name="taluk" value="{{i.ondriyam}}" type="text" class="form-control" id="exampleInput" required>
+                        </div>
+                     </div>
+                     <div class="col-md-3 col-12">
+                        <div class="form-group">
+                           <label>ஊர் பெயர்கள்</label>
+                           <input name="ஒன்றியம்" value="{{i.oor}}" type="text" class="form-control" id="exampleInput" required>
+                        </div>
+                     </div>
+                     <div class="col-md-3 col-12">
+                        <div class="form-group">
+                           <label>ஊராட்சி</label>
+                           <input name="ஊர் பெயர்கள்" value="{{i.oratchi}}" type="text" class="form-control" id="exampleInput" required>
+                        </div>
+                     </div>
+                     <div class="col-md-3 col-12">
+                        <div class="form-group">
+                           <label>தெரு பெயர்கள்</label>
+                           <input name="streeName" value="{{i.theru}}" type="text" class="form-control" id="exampleInput" required>
+                        </div>
+                     </div>
+                     <div class="col-md-3 col-12">
+                        <div class="form-group">
+                           <label>Status</label>
+                           <input name="status" value="{{i.status}}" type="text" class="form-control" id="exampleInput">
+                        </div>
+                     </div>
+                     <div class="col-md-3 col-12">
+                        <div class="form-group">
+                           <label>Accept/Reject</label>
+                           <input name="state" value="{{i.approve}}" type="text" class="form-control" id="exampleInput">
+                        </div>
+                     </div>
+                     <div class="col-md-4 col-12"></div>
+                     <input name="lstUsers" value="{{i.lstUser}}  -----" type="text" class="form-control">
+                     <div class="col-md-4 col-4">
+                        <div class="form-group">
+                           <button type="submit" class="btn btn-gradient-success float-left">Update</button>
+                        </div>
+                     </div>
+                     <div class="col-md-4 col-12">
+                        <div class="form-group">
+                  </div>
+               </div>
+            </form>
+         </div>
+      </div>
+   </div>
+</div>
+{% endfor %}
+{% for i in obj %}
+<div class="modal fade" id="del{{i.id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalScrollableTitle" aria-hidden="true">
+   <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+      <div class="modal-content">
+         <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalScrollableTitle">Delete a Name</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+            </button>
+         </div>
+         <div class="modal-body">
+            <h3>Are you sure you want to delete this Record "{{i.bname}}"?</h3>
+            <p style="color: red;">Note:This Process cannot be undone</p>
+            <form method="post" enctype="multipart/form-data">
+               {% csrf_token %}
+               <div class="modal-body">
+                  <input type="hidden" name="form_name" value="del">
+                  <input type="hidden" name="idd" value="{{i.id}}">
+               </div>
+         </div>
+         <div class="modal-footer">
+         <button type="submit" class="btn btn-gradient-danger">Yes</button>
+         <button data-dismiss="modal" class="btn btn-gradient-success">No</button>
+         </div>
+         </form>
+      </div>
+   </div>
+</div>
+{% endfor %}
+{% endblock %}

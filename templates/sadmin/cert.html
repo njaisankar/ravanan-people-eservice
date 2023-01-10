@@ -1,0 +1,121 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>certificate</title>
+    <!-- <link href='https://fonts.googleapis.com/css?family=Meera Inimai' rel='stylesheet'> -->
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Mukta+Malar:wght@600;800&display=swap');
+        body {
+        font-family: 'Mukta Malar', sans-serif;
+        font-size: 18px;
+      }
+        /* .imgCrt{
+            
+            background-image: url("https://bitbucket.org/Narendran_/testing_003/raw/a0741f803faeead5fef90b9b232cbbb50d3511cb/src.jpg");
+          
+            background-repeat: no-repeat;
+            background-size: 100% 100%;
+            
+            margin-left: auto;
+            margin-right: auto;
+            width: 1000px;
+            height: 600px;
+        } */
+        .imgCrt{
+            
+            background-image: url("https://bitbucket.org/Narendran_/testing_003/raw/a0741f803faeead5fef90b9b232cbbb50d3511cb/src.jpg");
+          
+            background-repeat: no-repeat;
+            background-size: 1000px 600px;
+
+
+            position: absolute;
+
+            /* margin-left: 50px; */
+            /* margin-right: auto; */
+            width: 1000px;
+            height: 600px;
+        }
+        .name{
+            position: absolute;
+            top: 213px;
+            left: 300px;
+           
+        }
+        .noteNum{
+            position: absolute;
+            top: 215px;
+            left: 850px;
+        }
+        .work{
+            position: absolute;
+            top: 246px;
+            left: 150px;
+        } 
+        .rupee{
+            position: absolute;
+            top: 343px;
+            left: 351px;
+        }
+        .dated{
+            position: absolute;
+            top: 504px;
+            left: 100px;
+            font-size: smaller;
+        }
+        .register{
+            position: absolute;
+            top: 492px;
+            left: 384px;
+            font-size: medium;
+            width: 200px;
+            text-align: center;
+        }
+        .resiver{
+            position: absolute;
+            top: 492px;
+            left: 668px;
+            width: 300px;
+            text-align: center;
+        }
+      
+    </style>
+</head>
+<body>
+    <!-- <img src="/media/work/PICTURES VIDEOS SONGS/Arun/ravananesevai/static/src.jpg" alt=""> -->
+    <!-- <img src="https://www.imagesource.com/wp-content/uploads/2019/06/Rio.jpg" /> -->
+    <div >
+        <div class="imgCrt" >
+            <span>
+                <p class="name">{{name}}</p>
+            </span>
+
+            <span >
+                <p class="noteNum">{{refno}}</p>
+            </span>
+
+            <span>
+                <p class="work">{{jobtit}}</p>
+            </span>
+
+            <span>
+                <p class="rupee">{{amount}}</p>
+            </span>
+
+            <span>
+                <p class="dated">{{date | date:"d/m/Y h:s:i A" }}</p>
+            </span>
+            <span>
+                <p class="register">{{user}}</p>
+            </span>
+            <span>
+                <p class="resiver">{{user}}</p>
+            </span>
+        </div>
+    </div>
+</body>
+</html>

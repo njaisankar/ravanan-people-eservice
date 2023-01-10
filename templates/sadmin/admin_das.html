@@ -1,0 +1,801 @@
+{% extends 'sadmin/base.html' %}
+{% load static %}
+{% block content %}
+
+    {% for obj in indPage %}
+    <!-- BEGIN: Content-->
+    <body onload="styleRemove()">
+      <div class="app-content content "  style="padding-top: 0.5%;" >
+         <div class="content-body">
+ 
+             <div class="row match-height">
+                 <div class="col-lg-12">
+                    <div class="card card-payment">
+                       <div class="card-header">
+                          <h4 class="card-title"> <u><b>Admin </b></u> </h4>
+                          <!-- <a href="#" data-toggle="modal" data-target="#user-profile-update" class="btn btn-gradient-success" href="">Update</a> -->
+                       </div>
+                       <form method="POST" enctype="multipart/form-data">
+                          {% csrf_token %}
+                          <input type="hidden" name="form_name" value="IndaxPage">
+                          <div class="card-body">
+                             <div class="row">
+                                
+                                <div class="col-md-3 col-12">
+                                 <div class="form-group">
+                                     <label>title</label>
+                                    <input value="{{ obj.title }}" name="title" type="text" class="form-control"  required >
+                                 </div>
+                              </div>
+ 
+                                <div class="col-md-3 col-12">
+                                 <div class="form-group">
+                                     <label>sub Title</label>
+                                    <input value="{{ obj.SubTitle }}" name="SubTitle" type="text" class="form-control"  required >
+                                 </div>
+                              </div>
+ 
+                              <div class="col-md-3 col-12"></div>  
+                              <!-- new line -->
+                              <div class="col-md-3 col-12"></div>
+
+                                <div class="col-md-3 col-12">
+                                 <div class="form-group">
+                                     <label for="">1 News title</label>
+                                    <input value="{{ obj.smallTitle }}" name="smallTitle" type="text" class="form-control"  required >
+                                 </div>
+                              </div>
+          
+                                <div class="col-md-3 col-12">
+                                   <div class="form-group">
+                                      <label>1 News title sub</label>
+                                      <input value="{{ obj.smallTitleSub }}" name="smallTitleSub" type="text" class="form-control"  required >
+                                      
+                                   </div>
+                                </div>
+ 
+                                 <div class="col-md-3 col-12">
+                                   <div class="form-group">
+                                      <label>1 News 1st line</label>
+                                      <input name="smallTitle_content_1" value="{{ obj.smallTitle_content_1 }}" type="text" class="form-control"  >
+                                   </div>
+                                 </div>
+                                <div class="col-md-3 col-12">
+                                   <div class="form-group">
+                                     <label>1 News 2nd line</label>
+                                     <input name="smallTitle_content_2" value="{{ obj.smallTitle_content_2 }}" type="text" class="form-control"  >
+                                   </div>
+                                </div>
+
+
+
+
+                                <div class="col-md-3 col-12">
+                                   <div class="form-group">
+                                     <label>2 News title</label>
+                                     <input name="smallTitle_2" value="{{ obj.smallTitle_2 }}" type="text" class="form-control"  >
+                                   </div>
+                                </div>
+                                <div class="col-md-3 col-12">
+                                   <div class="form-group">
+                                     <label>2 News sub title</label>
+                                     <input name="smallTitleSub_2" value="{{ obj.smallTitleSub_2 }}" type="text" class="form-control"  >
+                                   </div>
+                                </div>
+                                <div class="col-md-3 col-12">
+                                   <div class="form-group">
+                                     <label>2 News 1st line</label>
+                                     <input name="smallTitle_content_1_2" value="{{ obj.smallTitle_content_1_2 }}" type="text" class="form-control"  >
+                                   </div>
+                                </div>
+                                <div class="col-md-3 col-12">
+                                   <div class="form-group">
+                                     <label>2 News 2nd line</label>
+                                     <input name="smallTitle_content_2_2" value="{{ obj.smallTitle_content_2_2 }}" type="text" class="form-control"  >
+                                   </div>
+                                </div>
+                                <div class="col-md-3 col-12">
+                                   <div class="form-group">
+                                     <label>3 News title</label>
+                                     <input name="smallTitle_3" value="{{ obj.smallTitle_3 }}" type="text" class="form-control"  >
+                                   </div>
+                                </div>
+                                <div class="col-md-3 col-12" id="other_1" >
+                                   <div class="form-group">
+                                     <label>3 News sub title</label>
+                                     <input name="smallTitleSub_3" value="{{ obj.smallTitleSub_3 }}" type="text" class="form-control"  >
+                                   </div>
+                                </div>
+                                <div class="col-md-3 col-12" id="ondr_1">
+                                   <div class="form-group">
+                                      <label>3 News 1st line</label>
+                                      <input name="smallTitle_content_1_3" value="{{ obj.smallTitle_content_1_3 }}" type="text" class="form-control"  >
+                                   </div>
+                                </div>
+                                <div id="city_Name" class="col-md-3 col-12">
+                                   <div  class="form-group" id="oru_achi_hide_1">
+                                     <label>3 News 2nd line</label>
+                                     <input name="smallTitle_content_2_3" value="{{ obj.smallTitle_content_2_3 }}" type="text" class="form-control"  >
+                                   </div>
+                                </div>
+
+
+                                
+                                
+                                <div class="col-md-3 col-12" >
+                                   <div class="form-group">
+                                     <label>Vertical Title 1</label>
+                                     <input name="vrt_block_1" value="{{ obj.vrt_block_1 }}" type="text" class="form-control"  > 
+                                   </div>
+                                </div>
+                                <div class="col-md-3 col-12" >
+                                 <div class="form-group">
+                                   <label>Vertical Title 1 content</label>
+                                   <input name="vrt_block_1_content" value="{{ obj.vrt_block_1_content }}" type="text" class="form-control"  > 
+                                 </div>
+                              </div>
+
+                              <div class="col-md-3 col-12"></div>  
+                                <!-- new line -->
+                                <div class="col-md-3 col-12"></div>
+
+
+                              <div class="col-md-3 col-12" >
+                                 <div class="form-group">
+                                   <label>Vertical Title 2 </label>
+                                   <input name="vrt_block_2" value="{{ obj.vrt_block_2 }}" type="text" class="form-control"  > 
+                                 </div>
+                              </div>
+                              <div class="col-md-3 col-12" >
+                                 <div class="form-group">
+                                   <label>Vertical Title 2 content</label>
+                                   <input name="vrt_block_2_content" value="{{ obj.vrt_block_2_content }}" type="text" class="form-control"  > 
+                                 </div>
+                              </div>
+
+                              <div class="col-md-3 col-12"></div>  
+                                <!-- new line -->
+                                <div class="col-md-3 col-12"></div>
+
+
+                              <div class="col-md-3 col-12" >
+                                 <div class="form-group">
+                                   <label>Vertical Title 3 </label>
+                                   <input name="vrt_block_3" value="{{ obj.vrt_block_3 }}" type="text" class="form-control"  > 
+                                 </div>
+                              </div>
+                              <div class="col-md-3 col-12" >
+                                 <div class="form-group">
+                                   <label>Vertical Title 3 content</label>
+                                   <input name="vrt_block_3_content" value="{{ obj.vrt_block_3_content }}" type="text" class="form-control"  > 
+                                 </div>
+                              </div>
+                              <div class="col-md-3 col-12"></div>  
+                                <!-- new line -->
+                                <div class="col-md-3 col-12"></div>
+
+                              <div class="col-md-3 col-12" >
+                                 <div class="form-group">
+                                   <label>Mid content</label>
+                                   <input name="mid_content" value="{{ obj.mid_content }}" type="text" class="form-control"  > 
+                                 </div>
+                              </div>
+                              <div class="col-md-3 col-12" >
+                                 <div class="form-group">
+                                   <label>Mid content Sub</label>
+                                   <input name="mid_content_sub" value="{{ obj.mid_content_sub }}" type="text" class="form-control"  > 
+                                 </div>
+                              </div>
+
+                              <div class="col-md-3 col-12"></div>  
+                                <!-- new line -->
+                                <div class="col-md-3 col-12"></div>
+
+                              <div class="col-md-3 col-12" >
+                                 <div class="form-group">
+                                   <label>Bottom Content</label>
+                                   <input name="bottom_content" value="{{ obj.bottom_content }}" type="text" class="form-control"  > 
+                                 </div>
+                              </div>
+                              <div class="col-md-3 col-12"></div>  
+                                <!-- new line -->
+                                <div class="col-md-3 col-12"></div>
+                                <div class="col-md-3 col-12"></div>  
+                                <!-- new line -->
+                                
+
+
+                              <div class="col-md-3 col-12" >
+                               <div class="form-group">
+                                 <label>Address Title</label>
+                                 <input name="addressTitle" value="{{ obj.addressTitle }}" type="text" class="form-control"  > 
+                               </div>
+                            </div>
+ 
+                            <div class="col-md-3 col-12" >
+                               <div class="form-group">
+                                 <label>Address 1</label>
+                                 <input name="address_1" value="{{ obj.address_1 }}" type="text" class="form-control"  > 
+                               </div>
+                            </div>
+ 
+                            <div class="col-md-3 col-12" >
+                               <div class="form-group">
+                                 <label>Address 2</label>
+                                 <input name="address_2" value="{{ obj.address_2 }}" type="text" class="form-control"  > 
+                               </div>
+                            </div>
+ 
+                            <div class="col-md-3 col-12" >
+                               <div class="form-group">
+                                 <label>Address 3</label>
+                                 <input name="address_3" value="{{ obj.address_3 }}" type="text" class="form-control"  > 
+                               </div>
+                            </div>
+ 
+                            <div class="col-md-3 col-12" >
+                               <div class="form-group">
+                                 <label>FaceBook</label>
+                                 <input name="facebook" value="{{ obj.facebook }}" type="text" class="form-control"  > 
+                               </div>
+                            </div>
+ 
+                            <div class="col-md-3 col-12" >
+                               <div class="form-group">
+                                 <label>youtube</label>
+                                 <input name="youtube" value="{{ obj.youtube }}" type="text" class="form-control"  > 
+                               </div>
+                            </div>
+                            <div class="col-md-3 col-12" >
+                               <div class="form-group">
+                                 <label>twitter</label>
+                                 <input name="twitter" value="{{ obj.twitter }}" type="text" class="form-control"  > 
+                               </div>
+                            </div>
+                            <div class="col-md-3 col-12" >
+                               <div class="form-group">
+                                 <label>What's app</label>
+                                 <input name="whatsapp" value="{{ obj.whatsapp }}" type="text" class="form-control"  > 
+                               </div>
+                            </div>
+                           
+                           
+                            <h5 style="color: rgb(204, 19, 19);"> #Image dimension   for cover:[w=1920 x h=1080] </h5>
+                            <div class=" col-12"></div>
+                            
+
+                           
+                           
+                           
+                           
+                           
+                           
+                           
+                           
+                           
+                           
+                           
+                           
+                           
+                            <div class="col-md-3 col-12" ></div>
+                            <div class="col-md-3 col-12" >
+                               <div class="form-group">
+                                 <label for="cover_1"><img src="{{ obj.cover_1.url  }}" alt="No image" style="width: 50px;"> Cover pic 1</label>
+                                 <input name="cover_1" value="{{ obj.cover_1  }}" type="file" class="form-control" id="cover_1" style="display:none;"  > 
+                               </div>
+                            </div>
+                            <div class="col-md-3 col-12" >
+                               <div class="form-group">
+                                 <label for="cover_2"><img src="{{ obj.cover_2.url  }}" alt="No image" style="width: 50px;"> Cover pic 2</label>
+                                 <input name="cover_2" value="{{ obj.cover_2  }}" type="file" class="form-control" id="cover_2" style="display:none;"  > 
+                               </div>
+                            </div>
+                            <div class="col-md-3 col-12" >
+                               <div class="form-group">
+                                 <label for="cover_3"><img src="{{ obj.cover_3.url  }}" alt="No image" style="width: 50px;"> Cover pic 3</label>
+                                 <input name="cover_3" value="{{ obj.cover_3  }}" type="file" class="form-control" id="cover_3" style="display:none;"  > 
+                               </div>
+                            </div>
+ 
+                            <h5 style="color: rgb(204, 19, 19);"> #Image dimension   for News image:[w=1280 x h=720]->better </h5>
+                            <div class=" col-12"></div>
+                            <div class="col-md-3 col-12" ></div>
+                            <div class="col-md-3 col-12" >
+                               <div class="form-group">
+                                 <label for="news_1"><img src="{{ obj.news_1.url  }}" alt="No image" style="width: 50px;"> News Img 1</label>
+                                 <input name="news_1" value="{{ obj.news_1  }}" type="file" class="form-control" id="news_1" style="display:none;"  > 
+                               </div>
+                            </div>
+ 
+                            <div class="col-md-3 col-12" >
+                               <div class="form-group">
+                                 <label for="news_2"><img src="{{ obj.news_2.url  }}" alt="No image" style="width: 50px;"> News Img 2</label>
+                                 <input name="news_2" value="{{ obj.news_2  }}" type="file" class="form-control" id="news_2" style="display:none;"  > 
+                               </div>
+                            </div>
+ 
+                            <div class="col-md-3 col-12" >
+                               <div class="form-group">
+                                  
+                                 <label for="news_3"><img src="{{ obj.news_3.url  }}" alt="No image" style="width: 50px;"> News Img 3</label>
+                                 <input name="news_3" value="{{ obj.news_3  }}" type="file" class="form-control" id="news_3" style="display:none;"  > 
+                               </div>
+                            </div>
+                           
+                           {%for obj1 in serLink %}
+                            <!-- --------------------------------------------------------------- -->
+                            <div class=" col-12" style="padding-bottom:1px ; background-color: blue;"></div> 
+                            <div class=" col-12" style="padding-bottom:15px ; "></div> 
+                            <h5 style="color: rgb(204, 19, 19);"> External Service link </h5>
+                            <div class=" col-12"></div>
+ 
+                            <div class="col-md-3 col-12" >
+                              <div class="form-group">
+                                <label>Ration_Title_1</label>
+                                <input name="Ration_Title_1" value="{{ obj1.ration_1_title }}" type="text" class="form-control"  > 
+                              </div>
+                           </div>
+ 
+                           <div class="col-md-3 col-12" >
+                              <div class="form-group">
+                                <label>Ration_link_1</label>
+                                <input name="Ration_link_1" value="{{ obj1.ration_1_titleLink }}" type="text" class="form-control"  > 
+                              </div>
+                           </div>
+                           <div class="col-md-3 col-12" ></div>
+                           <div class="col-md-3 col-12" ></div>
+                           <div class="col-md-3 col-12" >
+                              <div class="form-group">
+                                <label>Ration_Title_2</label>
+                                <input name="Ration_Title_2" value="{{ obj1.ration_2_title }}" type="text" class="form-control"  > 
+                              </div>
+                           </div>
+ 
+                           <div class="col-md-3 col-12" >
+                              <div class="form-group">
+                                <label>Ration_link_2</label>
+                                <input name="Ration_link_2" value="{{ obj1.ration_2_titleLink }}" type="text" class="form-control"  > 
+                              </div>
+                           </div>
+                           <div class="col-md-3 col-12" ></div>
+                           <div class="col-md-3 col-12" ></div>
+
+                           <div class="col-md-3 col-12" >
+                              <div class="form-group">
+                                <label>Ration_Title_3</label>
+                                <input name="Ration_Title_3" value="{{ obj1.ration_3_title }}" type="text" class="form-control"  > 
+                              </div>
+                           </div>
+ 
+                           <div class="col-md-3 col-12" >
+                              <div class="form-group">
+                                <label>Ration_link_3</label>
+                                <input name="Ration_link_3" value="{{ obj1.ration_3_titleLink }}" type="text" class="form-control"  > 
+                              </div>
+                           </div>
+                           <div class="col-md-3 col-12" ></div>
+                           <div class="col-md-3 col-12" ></div>
+
+                           <div class="col-md-3 col-12" >
+                              <div class="form-group">
+                                <label>Ration_Title_4</label>
+                                <input name="Ration_Title_4" value="{{ obj1.ration_4_title }}" type="text" class="form-control"  > 
+                              </div>
+                           </div>
+ 
+                           <div class="col-md-3 col-12" >
+                              <div class="form-group">
+                                <label>Ration_link_4</label>
+                                <input name="Ration_link_4" value="{{ obj1.ration_4_titleLink }}" type="text" class="form-control"  > 
+                              </div>
+                           </div>
+                           <div class="col-md-3 col-12" ></div>
+                           <div class="col-md-3 col-12" ></div>
+
+                           <div class=" col-12" style="padding-bottom:1px ; background-color: blue;"></div> 
+                          
+                           <div class=" col-12"></div>
+
+                           <!-- aadhar----------------------------------------- -->
+                           
+                           <div class="col-md-3 col-12" style="padding-top: 10px;" >
+                              <div class="form-group">
+                                <label>aadhar_Title_1</label>
+                                <input name="aadhar_Title_1" value="{{ obj1.aadhar_1_title }}" type="text" class="form-control"  > 
+                              </div>
+                           </div>
+ 
+                           <div class="col-md-3 col-12" >
+                              <div class="form-group">
+                                <label>aadhar_link_1</label>
+                                <input name="aadhar_link_1" value="{{ obj1.aadhar_2_titleLink }}" type="text" class="form-control"  > 
+                              </div>
+                           </div>
+                           <div class="col-md-3 col-12" ></div>
+                           <div class="col-md-3 col-12" ></div>
+                           <div class="col-md-3 col-12" >
+                              <div class="form-group">
+                                <label>aadhar_Title_2</label>
+                                <input name="aadhar_Title_2" value="{{ obj1.aadhar_2_title }}" type="text" class="form-control"  > 
+                              </div>
+                           </div>
+ 
+                           <div class="col-md-3 col-12" >
+                              <div class="form-group">
+                                <label>aadhar_link_2</label>
+                                <input name="aadhar_link_2" value="{{ obj1.aadhar_2_titleLink }}" type="text" class="form-control"  > 
+                              </div>
+                           </div>
+                           <div class="col-md-3 col-12" ></div>
+                           <div class="col-md-3 col-12" ></div>
+
+                           <div class="col-md-3 col-12" >
+                              <div class="form-group">
+                                <label>aadhar_Title_3</label>
+                                <input name="aadhar_Title_3" value="{{ obj1.aadhar_3_title }}" type="text" class="form-control"  > 
+                              </div>
+                           </div>
+ 
+                           <div class="col-md-3 col-12" >
+                              <div class="form-group">
+                                <label>aadhar_link_3</label>
+                                <input name="aadhar_link_3" value="{{ obj1.aadhar_3_titleLink }}" type="text" class="form-control"  > 
+                              </div>
+                           </div>
+                           <div class="col-md-3 col-12" ></div>
+                           <div class="col-md-3 col-12" ></div>
+
+                           <div class="col-md-3 col-12" >
+                              <div class="form-group">
+                                <label>aadhar_Title_4</label>
+                                <input name="aadhar_Title_4" value="{{ obj1.aadhar_4_title }}" type="text" class="form-control"  > 
+                              </div>
+                           </div>
+ 
+                           <div class="col-md-3 col-12" >
+                              <div class="form-group">
+                                <label>aadhar_link_4</label>
+                                <input name="aadhar_link_4" value="{{ obj1.aadhar_4_titleLink }}" type="text" class="form-control"  > 
+                              </div>
+                           </div>
+                           <div class="col-md-3 col-12" ></div>
+                           <div class="col-md-3 col-12" ></div>
+
+                           <div class=" col-12" style="padding-bottom:1px ; background-color: blue;"></div> 
+                          
+                           <div class=" col-12"></div>
+                           <!-- pan   ----------------------------------------- -->
+                           <div class="col-md-3 col-12" style="padding-top: 10px;" >
+                              <div class="form-group">
+                                <label>pan_Title_1</label>
+                                <input name="pan_Title_1" value="{{ obj1.pan_1_title }}" type="text" class="form-control"  > 
+                              </div>
+                           </div>
+ 
+                           <div class="col-md-3 col-12" >
+                              <div class="form-group">
+                                <label>pan_link_1</label>
+                                <input name="pan_link_1" value="{{ obj1.pan_1_titleLink }}" type="text" class="form-control"  > 
+                              </div>
+                           </div>
+                           <div class="col-md-3 col-12" ></div>
+                           <div class="col-md-3 col-12" ></div>
+                           <div class="col-md-3 col-12" >
+                              <div class="form-group">
+                                <label>pan_Title_2</label>
+                                <input name="pan_Title_2" value="{{ obj1.pan_2_title }}" type="text" class="form-control"  > 
+                              </div>
+                           </div>
+ 
+                           <div class="col-md-3 col-12" >
+                              <div class="form-group">
+                                <label>pan_link_2</label>
+                                <input name="pan_link_2" value="{{ obj1.pan_2_titleLink }}" type="text" class="form-control"  > 
+                              </div>
+                           </div>
+                           <div class="col-md-3 col-12" ></div>
+                           <div class="col-md-3 col-12" ></div>
+
+                           <div class="col-md-3 col-12" >
+                              <div class="form-group">
+                                <label>pan_Title_3</label>
+                                <input name="pan_Title_3" value="{{ obj1.pan_3_title }}" type="text" class="form-control"  > 
+                              </div>
+                           </div>
+ 
+                           <div class="col-md-3 col-12" >
+                              <div class="form-group">
+                                <label>pan_link_3</label>
+                                <input name="pan_link_3" value="{{ obj1.pan_3_titleLink }}" type="text" class="form-control"  > 
+                              </div>
+                           </div>
+                           <div class="col-md-3 col-12" ></div>
+                           <div class="col-md-3 col-12" ></div>
+
+                           <div class="col-md-3 col-12" >
+                              <div class="form-group">
+                                <label>pan_Title_4</label>
+                                <input name="pan_Title_4" value="{{ obj1.pan_4_title }}" type="text" class="form-control"  > 
+                              </div>
+                           </div>
+ 
+                           <div class="col-md-3 col-12" >
+                              <div class="form-group">
+                                <label>pan_link_4</label>
+                                <input name="pan_link_4" value="{{ obj1.pan_4_titleLink }}" type="text" class="form-control"  > 
+                              </div>
+                           </div>
+                           <div class="col-md-3 col-12" ></div>
+                           <div class="col-md-3 col-12" ></div>
+
+                           <div class=" col-12" style="padding-bottom:1px ; background-color: blue;"></div> 
+                          
+                           <div class=" col-12"></div>
+                           <!-- welfar   ----------------------------------------- -->
+                           <div class="col-md-3 col-12" style="padding-top: 10px;" >
+                              <div class="form-group">
+                                <label>welfar_Title_1</label>
+                                <input name="welfar_Title_1" value="{{ obj1.welfar_1_title }}" type="text" class="form-control"  > 
+                              </div>
+                           </div>
+ 
+                           <div class="col-md-3 col-12" >
+                              <div class="form-group">
+                                <label>welfar_link_1</label>
+                                <input name="welfar_link_1" value="{{ obj1.welfar_1_titleLink }}" type="text" class="form-control"  > 
+                              </div>
+                           </div>
+                           <div class="col-md-3 col-12" ></div>
+                           <div class="col-md-3 col-12" ></div>
+                           <div class="col-md-3 col-12" >
+                              <div class="form-group">
+                                <label>welfar_Title_2</label>
+                                <input name="welfar_Title_2" value="{{ obj1.welfar_2_title }}" type="text" class="form-control"  > 
+                              </div>
+                           </div>
+ 
+                           <div class="col-md-3 col-12" >
+                              <div class="form-group">
+                                <label>welfar_link_2</label>
+                                <input name="welfar_link_2" value="{{ obj1.welfar_2_titleLink }}" type="text" class="form-control"  > 
+                              </div>
+                           </div>
+                           <div class="col-md-3 col-12" ></div>
+                           <div class="col-md-3 col-12" ></div>
+
+                           <div class="col-md-3 col-12" >
+                              <div class="form-group">
+                                <label>welfar_Title_3</label>
+                                <input name="welfar_Title_3" value="{{ obj1.welfar_3_title }}" type="text" class="form-control"  > 
+                              </div>
+                           </div>
+ 
+                           <div class="col-md-3 col-12" >
+                              <div class="form-group">
+                                <label>welfar_link_3</label>
+                                <input name="welfar_link_3" value="{{ obj1.welfar_3_titleLink }}" type="text" class="form-control"  > 
+                              </div>
+                           </div>
+                           <div class="col-md-3 col-12" ></div>
+                           <div class="col-md-3 col-12" ></div>
+
+                           <div class="col-md-3 col-12" >
+                              <div class="form-group">
+                                <label>welfar_Title_4</label>
+                                <input name="welfar_Title_4" value="{{ obj1.welfar_4_title }}" type="text" class="form-control"  > 
+                              </div>
+                           </div>
+ 
+                           <div class="col-md-3 col-12" >
+                              <div class="form-group">
+                                <label>welfar_link_4</label>
+                                <input name="welfar_link_4" value="{{ obj1.welfar_4_titleLink }}" type="text" class="form-control"  > 
+                              </div>
+                           </div>
+                           <div class="col-md-3 col-12" ></div>
+                           <div class="col-md-3 col-12" ></div>
+
+                           <div class=" col-12" style="padding-bottom:1px ; background-color: blue;"></div> 
+                          
+                           <div class=" col-12"></div>
+                           <!-- voter   ----------------------------------------- -->
+                           <div class="col-md-3 col-12" style="padding-top: 10px;" >
+                              <div class="form-group">
+                                <label>voter_id_Title_1</label>
+                                <input name="voter_id_Title_1" value="{{ obj1.voter_1_title }}" type="text" class="form-control"  > 
+                              </div>
+                           </div>
+ 
+                           <div class="col-md-3 col-12" >
+                              <div class="form-group">
+                                <label>voter_id_link_1</label>
+                                <input name="voter_id_link_1" value="{{ obj1.voter_1_titleLink }}" type="text" class="form-control"  > 
+                              </div>
+                           </div>
+                           <div class="col-md-3 col-12" ></div>
+                           <div class="col-md-3 col-12" ></div>
+                           <div class="col-md-3 col-12" >
+                              <div class="form-group">
+                                <label>voter_id_Title_2</label>
+                                <input name="voter_id_Title_2" value="{{ obj1.voter_2_title }}" type="text" class="form-control"  > 
+                              </div>
+                           </div>
+ 
+                           <div class="col-md-3 col-12" >
+                              <div class="form-group">
+                                <label>voter_id_link_2</label>
+                                <input name="voter_id_link_2" value="{{ obj1.voter_2_titleLink }}" type="text" class="form-control"  > 
+                              </div>
+                           </div>
+                           <div class="col-md-3 col-12" ></div>
+                           <div class="col-md-3 col-12" ></div>
+
+                           <div class="col-md-3 col-12" >
+                              <div class="form-group">
+                                <label>voter_id_Title_3</label>
+                                <input name="voter_id_Title_3" value="{{ obj1.voter_3_title }}" type="text" class="form-control"  > 
+                              </div>
+                           </div>
+ 
+                           <div class="col-md-3 col-12" >
+                              <div class="form-group">
+                                <label>voter_id_link_3</label>
+                                <input name="voter_id_link_3" value="{{ obj1.voter_3_titleLink }}" type="text" class="form-control"  > 
+                              </div>
+                           </div>
+                           <div class="col-md-3 col-12" ></div>
+                           <div class="col-md-3 col-12" ></div>
+
+                           <div class="col-md-3 col-12" >
+                              <div class="form-group">
+                                <label>voter_id_Title_4</label>
+                                <input name="voter_id_Title_4" value="{{ obj1.voter_4_title }}" type="text" class="form-control"  > 
+                              </div>
+                           </div>
+ 
+                           <div class="col-md-3 col-12" >
+                              <div class="form-group">
+                                <label>voter_id_link_4</label>
+                                <input name="voter_id_link_4" value="{{ obj1.voter_4_titleLink }}" type="text" class="form-control"  > 
+                              </div>
+                           </div>
+                           <div class="col-md-3 col-12" ></div>
+                           <div class="col-md-3 col-12" ></div>
+
+                           <div class=" col-12" style="padding-bottom:1px ; background-color: blue;"></div> 
+                          
+                           <div class=" col-12"></div>
+                           <!-- other   ----------------------------------------- -->
+                           <div class="col-md-3 col-12" style="padding-top: 10px;" >
+                              <div class="form-group">
+                                <label>other_Title_1</label>
+                                <input name="other_Title_1" value="{{ obj1.other_1_title }}" type="text" class="form-control"  > 
+                              </div>
+                           </div>
+ 
+                           <div class="col-md-3 col-12" >
+                              <div class="form-group">
+                                <label>other_link_1</label>
+                                <input name="other_link_1" value="{{ obj1.other_1_titleLink }}" type="text" class="form-control"  > 
+                              </div>
+                           </div>
+                           <div class="col-md-3 col-12" ></div>
+                           <div class="col-md-3 col-12" ></div>
+                           <div class="col-md-3 col-12" >
+                              <div class="form-group">
+                                <label>other_Title_2</label>
+                                <input name="other_Title_2" value="{{ obj1.other_2_title }}" type="text" class="form-control"  > 
+                              </div>
+                           </div>
+ 
+                           <div class="col-md-3 col-12" >
+                              <div class="form-group">
+                                <label>other_link_2</label>
+                                <input name="other_link_2" value="{{ obj1.other_2_titleLink }}" type="text" class="form-control"  > 
+                              </div>
+                           </div>
+                           <div class="col-md-3 col-12" ></div>
+                           <div class="col-md-3 col-12" ></div>
+
+                           <div class="col-md-3 col-12" >
+                              <div class="form-group">
+                                <label>other_Title_3</label>
+                                <input name="other_Title_3" value="{{ obj1.other_3_title }}" type="text" class="form-control"  > 
+                              </div>
+                           </div>
+ 
+                           <div class="col-md-3 col-12" >
+                              <div class="form-group">
+                                <label>other_link_3</label>
+                                <input name="other_link_3" value="{{ obj1.other_3_titleLink }}" type="text" class="form-control"  > 
+                              </div>
+                           </div>
+                           <div class="col-md-3 col-12" ></div>
+                           <div class="col-md-3 col-12" ></div>
+
+                           <div class="col-md-3 col-12" >
+                              <div class="form-group">
+                                <label>other_Title_4</label>
+                                <input name="other_Title_4" value="{{ obj1.other_4_title }}" type="text" class="form-control"  > 
+                              </div>
+                           </div>
+ 
+                           <div class="col-md-3 col-12" >
+                              <div class="form-group">
+                                <label>other_link_4</label>
+                                <input name="other_link_4" value="{{ obj1.other_4_titleLink }}" type="text" class="form-control"  > 
+                              </div>
+                           </div>
+                           <div class="col-md-3 col-12" ></div>
+                           <div class="col-md-3 col-12" ></div>
+
+                           <div class=" col-12" style="padding-bottom:1px ; background-color: blue;"></div> 
+                          
+                           <div class=" col-12"></div>
+
+
+
+                           {% endfor %}   
+
+                           <!-- other ------------------------------------------------------------>
+                            <div class=" col-12" style="padding-bottom:15px ; "></div> 
+                                <div class="col-md-4 col-12">
+                                   <div class="form-group">
+                                      <button type="submit" class="btn btn-gradient-success">பதிவு செய்க</button>
+                                   </div>
+                                </div>
+                             </div>
+                          </div>
+                       </form>
+                  </div>
+                 </div>
+              </div>
+ 
+ 
+         </div>
+     </div>
+
+    </body>
+
+    {% endfor %}
+    <!-- END: Content-->
+
+    <script>
+       function styleRemove(){
+         document.getElementById("nav_bar").innerHTML = "";
+         document.getElementById("removeStyle").style.paddingTop = "100px";
+       }
+    </script>
+
+        <!-- BEGIN: Vendor JS-->
+        <script src="{% static 'sadmin/app-assets/vendors/js/vendors.min.js' %}"></script>
+        <!-- BEGIN Vendor JS-->
+    
+        <!-- BEGIN: Page Vendor JS-->
+        <script src="{% static 'sadmin/app-assets/vendors/js/ui/jquery.sticky.js' %}"></script>
+        <script src="{% static 'sadmin/app-assets/vendors/js/forms/wizard/bs-stepper.min.js' %}"></script>
+        <script src="{% static 'sadmin/app-assets/vendors/js/forms/select/select2.full.min.js' %}"></script>
+        <script src="{% static 'sadmin/app-assets/vendors/js/forms/validation/jquery.validate.min.js' %}"></script>
+        <!-- END: Page Vendor JS-->
+    
+        <!-- BEGIN: Theme JS-->
+        <script src="{% static 'sadmin/app-assets/js/core/app-menu.js' %}"></script>
+        <script src="{% static 'sadmin/app-assets/js/core/app.js' %}"></script>
+        <!-- END: Theme JS-->
+    
+        <!-- BEGIN: Page JS-->
+        <script src="{% static 'sadmin/app-assets/js/scripts/forms/form-wizard.js' %}"></script>
+        <!-- END: Page JS-->
+    
+        <script>
+            $(window).on('load', function() {
+                if (feather) {
+                    feather.replace({
+                        width: 14,
+                        height: 14
+                    });
+                }
+            })
+        </script>
+
+{% endblock %}

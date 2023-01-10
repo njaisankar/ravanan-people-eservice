@@ -1,0 +1,8 @@
+xhtml2pdf
+wkhtmltopdf
+pdf2image
+Pillow
+
+
+eroro details
+UNIQUE constraint failed: auth_user.username

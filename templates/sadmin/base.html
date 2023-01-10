@@ -1,0 +1,313 @@
+{% load static %}
+<!DOCTYPE html>
+<html class="loading" lang="en" data-textdirection="ltr">
+   <!-- BEGIN: Head-->
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=0,minimal-ui">
+      <title>Ravanan People E-Service Center</title>
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bs-stepper/dist/js/bs-stepper.min.js">
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bs-stepper/dist/css/bs-stepper.min.css">
+      <link href="https://fonts.google.com/specimen/Mukta+Malar?subset=tamil#standard-styles" rel="stylesheet">
+      <!-- BEGIN: Vendor CSS-->
+      <link rel="stylesheet" type="text/css" href="{% static 'sadmin/app-assets/vendors/css/vendors.min.css' %}">
+      <link rel="stylesheet" type="text/css" href="{% static 'sadmin/app-assets/vendors/css/charts/apexcharts.css' %}">
+      <link rel="stylesheet" type="text/css" href="{% static 'sadmin/app-assets/vendors/css/extensions/toastr.min.css' %}">
+      <!-- END: Vendor CSS-->
+      <!-- BEGIN: Theme CSS-->
+      <link rel="stylesheet" type="text/css" href="{% static 'sadmin/app-assets/css/bootstrap.css' %}">
+      <link rel="stylesheet" type="text/css" href="{% static 'sadmin/app-assets/css/bootstrap-extended.css' %}">
+      <link rel="stylesheet" type="text/css" href="{% static 'sadmin/app-assets/css/colors.css' %}">
+      <link rel="stylesheet" type="text/css" href="{% static 'sadmin/app-assets/css/components.css' %}">
+      <link rel="stylesheet" type="text/css" href="{% static 'sadmin/app-assets/css/themes/dark-layout.css' %}">
+      <link rel="stylesheet" type="text/css" href="{% static 'sadmin/app-assets/css/themes/bordered-layout.css' %}">
+      <link rel="stylesheet" type="text/css" href="{% static 'sadmin/app-assets/css/themes/semi-dark-layout.css' %}">
+      <!-- BEGIN: Page CSS-->
+      <link rel="stylesheet" type="text/css" href="{% static 'sadmin/app-assets/css/core/menu/menu-types/horizontal-menu.css' %}">
+      <link rel="stylesheet" type="text/css" href="{% static 'sadmin/app-assets/css/pages/dashboard-ecommerce.css' %}">
+      <link rel="stylesheet" type="text/css" href="{% static 'sadmin/app-assets/css/plugins/charts/chart-apex.css' %}">
+      <link rel="stylesheet" type="text/css" href="{% static 'sadmin/app-assets/css/plugins/extensions/ext-component-toastr.css' %}">
+      <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+   
+      
+    <!-- BEGIN: Vendor CSS-->
+  
+    <link rel="stylesheet" type="text/css" href="{% static 'sadmin/app-assets/vendors/css/forms/wizard/bs-stepper.min.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'sadmin/app-assets/vendors/css/forms/select/select2.min.css' %}">
+    <!-- END: Vendor CSS-->
+
+    <!-- BEGIN: Page CSS-->
+    <link rel="stylesheet" type="text/css" href="{% static 'sadmin/app-assets/css/plugins/forms/form-validation.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'sadmin/app-assets/css/plugins/forms/form-wizard.css' %}">
+    <!-- END: Page CSS-->
+
+    <!-- BEGIN: Custom CSS-->
+    <link rel="stylesheet" type="text/css" href="{% static 'sadmin/assets/css/style.css' %}">
+    <!-- END: Custom CSS-->
+      <!-- BEGIN: Vendor CSS-->
+      <link rel="stylesheet" type="text/css' %}" href="{% static 'sadmin/app-assets/vendors/css/vendors.min.css' %}">
+      <link rel="stylesheet" type="text/css' %}" href="{% static 'sadmin/app-assets/vendors/css/forms/wizard/bs-stepper.min.css' %}">
+      <link rel="stylesheet" type="text/css' %}" href="{% static 'sadmin/app-assets/vendors/css/forms/select/select2.min.css' %}">
+      <!-- END: Vendor CSS-->
+
+      <!-- BEGIN: Theme CSS-->
+      <link rel="stylesheet" type="text/css' %}" href="{% static 'sadmin/app-assets/css/bootstrap.css' %}">
+      <link rel="stylesheet" type="text/css' %}" href="{% static 'sadmin/app-assets/css/bootstrap-extended.css' %}">
+      <link rel="stylesheet" type="text/css' %}" href="{% static 'sadmin/app-assets/css/colors.css' %}">
+      <link rel="stylesheet" type="text/css' %}" href="{% static 'sadmin/app-assets/css/components.css' %}">
+      <link rel="stylesheet" type="text/css' %}" href="{% static 'sadmin/app-assets/css/themes/dark-layout.css' %}">
+      <link rel="stylesheet" type="text/css' %}" href="{% static 'sadmin/app-assets/css/themes/bordered-layout.css' %}">
+      <link rel="stylesheet" type="text/css' %}" href="{% static 'sadmin/app-assets/css/themes/semi-dark-layout.css' %}">
+
+      <!-- BEGIN: Page CSS-->
+      <link rel="stylesheet" type="text/css' %}" href="{% static 'sadmin/app-assets/css/core/menu/menu-types/horizontal-menu.css' %}">
+      <link rel="stylesheet" type="text/css' %}" href="{% static 'sadmin/app-assets/css/plugins/forms/form-validation.css' %}">
+      <link rel="stylesheet" type="text/css' %}" href="{% static 'sadmin/app-assets/css/plugins/forms/form-wizard.css' %}">
+      <!-- END: Page CSS-->
+
+      <!-- BEGIN: Custom CSS-->
+      <link rel="stylesheet" type="text/css' %}" href="{% static 'sadmin/assets/css/style.css' %}">
+      <!-- END: Custom CSS-->
+   </head>
+   <!-- END: Head-->
+   <!-- BEGIN: Body-->
+   <body class="horizontal-layout horizontal-menu  navbar-floating footer-static  " data-open="hover" data-menu="horizontal-menu" data-col="">
+      {% if messages %}
+        {% for i in messages %}
+            <script type="text/javascript">
+                swal("{{i}}");
+            </script>
+        {% endfor %}
+    {% endif %}
+      <!-- BEGIN: Header-->
+      <nav  class="header-navbar navbar-expand-lg navbar navbar-fixed align-items-center navbar-shadow navbar-brand-center" data-nav="brand-center">
+         <div class="navbar-header d-xl-block d-none " style="right: 50%;">
+            <ul class="nav navbar-nav justify-content-center">
+               <li class="nav-item">
+                  <a class="navbar-brand" href="#">
+                     <span class="brand-logo">
+                        <h2 class="brand-text mb-0">Ravanan People E-Service Center</h2>
+                     </span>
+                     
+                  </a>
+               </li>
+            </ul>
+         </div>
+         <div class="navbar-container d-flex content">
+            <div class="bookmark-wrapper d-flex align-items-center">
+               <ul class="nav navbar-nav d-xl-none">
+                  <li class="nav-item"><a class="nav-link menu-toggle" href="javascript:void(0);"><i class="ficon" data-feather="menu"></i></a></li>
+               </ul>
+            </div>
+            <ul class="nav navbar-nav align-items-center ml-auto">
+               
+               <!-- <li class="nav-item dropdown dropdown-user">
+                  <a class="nav-link dropdown-toggle dropdown-user-link" id="dropdown-user" href="javascript:void(0);" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                     <div class="user-nav d-sm-flex d-none"><span class="user-name font-weight-bolder">{{request.user.username}}</span></div>
+                     <span class="avatar"></span>
+                  </a>
+                  <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdown-user">
+                     <a class="dropdown-item" href="{% url 'sadmin-logout' %}"><i data-feather='log-out'></i> வெளியேறு</a>
+                  </div>
+               </li> -->
+               
+               {% if request.path == "/sadmin/dash/" %}
+               <li class="nav-item d-none d-lg-block"><a class="nav-link nav-link-style"><i class="ficon" data-feather="moon"></i></a></li>
+                  {% else %}
+                     <li class="dropdown dropdown-submenu" data-menu="dropdown-submenu">
+                        <a class="dropdown-item d-flex align-items-center dropdown-toggle" href="#" data-toggle="dropdown" data-i18n="Charts">
+
+                           <span data-i18n="user-name font-weight-bolder">{{request.user.username}}</span>
+                        </a>
+                        <ul class="dropdown-menu">
+                           <li data-menu="">
+                              <a class="dropdown-item d-flex align-items-center" href="{% url 'sadmin-password-change-form' %}" data-toggle="dropdown" data-i18n="Apex">
+                                 <span data-i18n="Apex">Change your password</span>
+                              </a>
+                           </li>
+                           <li data-menu="">
+                              <a class="dropdown-item d-flex align-items-center" href="{% url 'sadmin-logout' %}" data-toggle="dropdown" data-i18n="Chartjs">
+
+                                 <span data-i18n="Chartjs">Logout</span>
+                              </a>
+                           </li>
+                        </ul>
+                     </li>
+               {% endif %}
+
+            </ul>
+         </div>
+      </nav>
+      <!-- END: Header-->
+      <!-- BEGIN: Main Menu-->
+      <div class="horizontal-menu-wrapper" id="nav_bar">
+         <div class="header-navbar navbar-expand-sm navbar navbar-horizontal floating-nav navbar-light navbar-shadow menu-border" role="navigation" data-menu="menu-wrapper" data-menu-type="floating-nav">
+            <div class="navbar-header">
+               <ul class="nav navbar-nav flex-row">
+                  <li class="nav-item mr-auto">
+                     <a class="navbar-brand" href="#">
+                        <span class="brand-logo">
+                        </span>
+                        <h2 class="brand-text mb-0">Ravanan People <br>E-Service Center</h2>
+                     </a>
+                  </li>
+                  <li class="nav-item nav-toggle"><a class="nav-link modern-nav-toggle pr-0" data-toggle="collapse"><i class="d-block d-xl-none text-primary toggle-icon font-medium-4" data-feather="x"></i></a></li>
+               </ul>
+            </div>
+            <div class="shadow-bottom"></div>
+            <!-- Horizontal menu content-->
+            
+
+         </br>
+         {% if request.path == "/sadmin/dash/" %}
+
+            {% else %}
+         
+            <!-- Horizontal menu content-->
+            <div class="navbar-container main-menu-content" data-menu="menu-container">
+               <!-- include ../../../includes/mixins-->
+               <ul class="nav navbar-nav" id="main-menu-navigation" data-menu="menu-navigation">
+                   {% if request.path == "/" %}
+                        <li class="nav-item active">
+                  {% else %}
+                        <li class="nav-item">
+                  {% endif %}
+                     <a class="nav-link d-flex align-items-center" href="{% url 'sadmin-dashboard' %}">
+                        <span data-i18n="Dashboards">Home</span>
+                       </a>
+                   </li>
+                  {% if request.path == "/sadmin/service/ration" %}
+                        <li class="nav-item active">
+                  {% else %}
+                        <li class="nav-item">
+                  {% endif %}
+                  {% if is_ration_access %}
+                     <a class="nav-link d-flex align-items-center" href="{% url 'ration' %}">
+                        <i></i><span data-i18n="Dashboards">Ration Card</span>
+                     </a>
+                  {%endif%}
+                  </li>
+                  <!-- {% if request.path == "/sadmin/service/aadhar" %}
+                        <li class="nav-item active">
+                  {% else %}
+                        <li class="nav-item">
+                  {% endif %}
+                  {%if is_aadhar_access%}
+                     <a class="nav-link d-flex align-items-center" href="{% url 'aadhar' %}">
+                        <i ></i><span data-i18n="Dashboards">Aadhar</span>
+                     </a>
+                  {% endif %}
+                  </li>
+                  {% if request.path == "/sadmin/service/pan" %}
+                        <li class="nav-item active">
+                  {% else %}
+                        <li class="nav-item">
+                  {% endif %}
+                  {%if is_pan_access%}
+                     <a class="nav-link d-flex align-items-center" href="{% url 'pan' %}">
+                        <i ></i><span data-i18n="Dashboards">PAN Card</span>
+                     </a>
+                  {%endif%}
+                  </li>
+                  {% if request.path == "/sadmin/service/welfare" %}
+                        <li class="nav-item active">
+                  {% else %}
+                        <li class="nav-item">
+                  {% endif %}
+                  {%if is_welfare_access%}
+                     <a class="nav-link d-flex align-items-center" href="{% url 'Welfare' %}">
+                        <i ></i><span data-i18n="Dashboards">Welfare</span>
+                     </a>
+                  {%endif%}
+                  </li>
+                  {% if request.path == "/sadmin/service/voter-id" %}
+                        <li class="nav-item active">
+                  {% else %}
+                        <li class="nav-item">
+                  {% endif %} 
+                  {%if is_voter_access%}
+                     <a class="nav-link d-flex align-items-center" href="{% url 'Voter-card' %}">
+                        <i></i><span data-i18n="Dashboards">Ration Card</span>
+                     </a>
+                  {%endif%}
+                  </li> -->
+                  <!-- {% if request.path == "/sadmin/service/others" %}
+                        <li class="nav-item active">
+                  {% else %}
+                        <li class="nav-item">
+                  {% endif %}
+                  {%if is_ithara_access%}
+                     <a class="nav-link d-flex align-items-center" href="{% url 'ithura' %}">
+                        <i ></i><span data-i18n="Dashboards">Other</span>
+                     </a>
+                  {%endif%}
+                  </li> -->
+               </ul>
+            </div>
+         {% endif %}      
+         </div>
+      </div>
+      
+      <!-- END: Main Menu-->
+      <!-- BEGIN: Content-->
+      <div class="app-content content " id="removeStyle">
+         <div class="content-overlay"></div>
+         <div class="header-navbar-shadow"></div>
+         <div class="content-wrapper">
+            <div class="content-header row">
+            </div>
+            <div class="content-body">
+               {% block content %}
+               {% endblock %}
+            </div>
+         </div>
+      </div>
+      <!-- END: Content-->
+      <div class="sidenav-overlay"></div>
+      <div class="drag-target"></div>
+      <!-- BEGIN: Footer-->
+      <div class="container">
+      <footer class="my-1">
+         <div class="d-flex flex-column flex-sm-row justify-content-between py-0 my-0">
+            <p class="clearfix mb-0">COPYRIGHT &copy; 2021<a class="ml-25" href="#" target="_blank"> Ravanan People E-Service Center</a> All rights Reserved</p>
+            <span>Hand-crafted & Made with <a href="https://askdotnet.azurewebsites.net" target="_blank"> AskDotNet</a> and <a href="https://askdotnet.com" target="_blank"><img src="/static/sadmin/app-assets/images/logo/askdotnet_logo1.png" height="26px"></a></span>
+         </div>
+      </footer>
+      <div class="d-flex flex-column flex-sm-row justify-content-between py-0 my-1">
+         <button class="btn btn-primary btn-icon  scroll-top waves-effect waves-float waves-light" style=" margin-bottom:-30px"  type="button"><i data-feather="arrow-up"></i></button>
+      </div>
+      
+   </div>
+      <!-- END: Footer-->
+      <!-- BEGIN: Vendor JS-->
+      <script src="{% static 'sadmin/app-assets/vendors/js/vendors.min.js' %}"></script>
+      <!-- BEGIN Vendor JS-->
+      <!-- BEGIN: Page Vendor JS-->
+      <script src="{% static 'sadmin/app-assets/vendors/js/ui/jquery.sticky.js' %}"></script>
+      <script src="{% static 'sadmin/app-assets/vendors/js/charts/apexcharts.min.js' %}"></script>
+      <!-- END: Page Vendor JS-->
+      <!-- BEGIN: Theme JS-->
+      <script src="{% static 'sadmin/app-assets/js/core/app-menu.js' %}"></script>
+      <script src="{% static 'sadmin/app-assets/js/core/app.js' %}"></script>
+      <!-- END: Theme JS-->
+      <!-- BEGIN: Page JS-->
+      <script src="{% static 'sadmin/app-assets/js/scripts/pages/dashboard-ecommerce.js' %}"></script>
+      <!-- END: Page JS-->
+
+      <!-- BEGIN: work JS-->
+      <script src="{% static 'sadmin/app-assets/js/own/work.js' %}"></script>
+      <!-- END: work JS-->
+      <script>
+         $(window).on('load', function() {
+             if (feather) {
+                 feather.replace({
+                     width: 14,
+                     height: 14
+                 });
+             }
+         })
+      </script>
+   </body>
+   <!-- END: Body-->
+</html>

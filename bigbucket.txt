@@ -1,0 +1,81 @@
+﻿rajesh.skumar13@gmail.com
+r112233*
+py - app pwd
+app pwd:ATBBgyqFVzxfGYKgP445YhEAhTbS502D6784
+atlasion link
+njaisankar@gmail.com
+uid:njaisankar1980
+pwd:Dayanive0915
+
+admin_1r112233*
+https://bitbucket.org/infopattarai/ravananesevai/
+Nivedaya0915
+
+aws
+ravananesevai@gmail.com
+Arun@#1234
+
+ubuntu@ec2-3-90-252-160.compute-1.amazonaws.com
+
+
+Use case scenario
+njaisankar/Test12345   - non-staff
+pnjaisan@yahoo.com/Test12345 - staff - only view permission for service link
+pnjaisan@rediffmail.com/Test12345 staff - all rights
+jais@uk.com Test12345
+
+
+1. Issue:No module named 'xhtml2pdf'
+Resolution: py -m pip install xhtml2pdf
+
+2.Issue: No such table? –
+The class defined in product/models.py is the mere idea of what our database is going to look like but it didn’t create any table in the database. We can assume class Phone as conceptual schema. Before the creation of any table, if we try to access the table before creation, it will throw an error like this.
+
+OperationalError at /sadmin/admin_profile/
+no such table: admin_profile
+
+python manage.py makemigrations
+Migrations for 'webapp':
+  webapp\migrations\0001_initial.py
+    - 1
+
+3.Issue: You have 18 unapplied migration(s). Your project may not work properly until you apply the migrations for app(s): admin, auth, contenttypes, sessions.
+Run 'python manage.py migrate' to apply them.
+
+Resolution: py manage.py migrate
+
+PIL not found
+pip3 install pillow or
+py -m pip install Pillow
+
+
+
+
+#Add dynamically
+Click + add two columns 1. Title  Text 2. Link Text Model.py
+python manage.py makemigrations
+python manage.py migrate
+add newly created column in admin_dash Views
+
+#Save
+lob.other_4_title = request.POST['other_Title_4']
+lob.other_4_titleLink = request.POST['other_link_4']
+
+#Other
+
+
+
+
+
+Template
+--------
+
+FieldName : Name
+Datatype: Text, 
+FieldName : Age
+Datatype: int
+FieldName : Name1
+Datatype: Text1
+FieldName : Name1
+Datatype: Text2
+
